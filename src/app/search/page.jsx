@@ -1,7 +1,11 @@
 "use client";
+
+export const dynamic = "force-dynamic";
+
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ImageModal from "@/components/ImageModal";
+
 
 export default function SearchPage() {
   const params = useSearchParams();
