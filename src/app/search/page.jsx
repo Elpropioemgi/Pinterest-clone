@@ -1,5 +1,12 @@
-import SearchClient from "./SearchClient";
+"use client";
 
-export default function SearchPage() {
-  return <SearchClient />;
+import { Suspense } from "react";
+import SearchComponent from "./SearchComponent";
+
+export default function Page() {
+  return (
+    <Suspense fallback={<p>Cargando búsqueda...</p>}>
+      <SearchComponent />
+    </Suspense>
+  );
 }
