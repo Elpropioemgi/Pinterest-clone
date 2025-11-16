@@ -1,12 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
-import SearchComponent from "./SearchComponent";
+import SearchClient from "./SearchClient";
 
 export default function Page() {
   return (
     <Suspense fallback={<p>Cargando búsqueda...</p>}>
-      <SearchComponent />
+      <SearchClient />
     </Suspense>
   );
 }
