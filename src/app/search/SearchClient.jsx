@@ -5,18 +5,8 @@ export const dynamic = "force-dynamic";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ImageModal from "@/components/ImageModal";
-import { Suspense } from "react";
-import SearchClient from "./SearchClient";
 
-export default function Page() {
-  return (
-    <Suspense fallback={<div className="p-6">Cargando búsqueda...</div>}>
-      <SearchClient />
-    </Suspense>
-  );
-}
-
-export default function SearchPage() {
+export default function SearchClient() {
   const params = useSearchParams();
   const query = params.get("query") || "";
 
@@ -49,7 +39,6 @@ export default function SearchPage() {
 
   return (
     <main className="min-h-screen p-6 max-w-7xl mx-auto">
-
       <h1 className="text-3xl font-bold mb-6">
         Resultados para: <span className="text-red-600">{query}</span>
       </h1>
@@ -60,7 +49,6 @@ export default function SearchPage() {
         <p className="text-gray-600">No se encontraron resultados.</p>
       )}
 
-      {/* GRID MASONRY */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {results.map((img) => (
           <div key={img.id}>
@@ -73,9 +61,11 @@ export default function SearchPage() {
         ))}
       </div>
 
-      {/* MODAL */}
       {selectedImage && (
-        <ImageModal image={selectedImage} onClose={() => setSelectedImage(null)} />
+        <ImageModal
+          image={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
       )}
     </main>
   );
